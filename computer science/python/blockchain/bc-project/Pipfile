@@ -10,7 +10,7 @@ autopep8 = "*"
 
 [packages]
 requests = "==2.18.4"
-flask = "==0.12.2"
+flask = "==1.0"
 flask-cors = "*"
 
 [requires]
