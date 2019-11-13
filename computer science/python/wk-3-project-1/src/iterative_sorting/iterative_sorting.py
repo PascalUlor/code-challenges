@@ -30,6 +30,8 @@ def bubble_sort(arr):
 # STRETCH: implement the Count Sort function below
 def count_sort(arr, maximum=-1):
     """
+    Note upperbound of k is O(n) and it does not work with floats or negative values
+    it can not also be applied on set of numbers with varied range
     count = array of k+1 zeros
     for x in input:
         count[key(x)] += 1
