@@ -69,6 +69,8 @@ def merge_in_place(arr, start, mid, end):
 # Two pointers to maintain start
 # of both arrays to merge
     while start <= mid and start2 <= end:
+        # element 1 = arr[start]
+        # element 2 = arr[start2]
         # If element 1 is in right place
         if arr[start] <= arr[start2]:
             start += 1
@@ -77,7 +79,7 @@ def merge_in_place(arr, start, mid, end):
             index = start2
       
                 # Shift all the elements between element 1 
-                # element 2, right by 1. 
+                # element 2, right by 1. (Swap)
             while index != start: 
                 arr[index] = arr[index - 1]
                 index -= 1
