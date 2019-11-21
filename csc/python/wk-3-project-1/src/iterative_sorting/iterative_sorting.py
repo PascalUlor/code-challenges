@@ -1,8 +1,14 @@
 # TO-DO: Complete the selection_sort() function below
+"""repeat (numOfElements - 1) times
+  set the first unsorted element as the minimum
+  for each of the unsorted elements
+    if element < currentMinimum
+      set element as new minimum
+  swap minimum with first unsorted position"""
 def selection_sort(arr):
     # loop through n-1 elements
     for i in range(0, len(arr) - 1):
-        cur_index = i
+        cur_index = i # first unsorted element
         smallest_index = cur_index
         # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
@@ -10,7 +16,7 @@ def selection_sort(arr):
             if arr[j] < arr[smallest_index]:
                 smallest_index = j
 
-        # TO-DO: swap
+        # TO-DO: swap first unsorted element with minimum
         arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
 
     return arr
