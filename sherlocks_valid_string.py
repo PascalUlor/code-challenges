@@ -11,23 +11,31 @@ def isValid(s):
         else:
             char_count[s[i]] = 1
     
-    odd_count = 0
     counts = [char_count[k] for k in char_count]
-    evens = [char_count[k] for k in char_count if char_count[k]%2 == 0]
     print(counts)
-    for i in range(0, len(counts)):
-        if counts[i]%2 != 0:
-            odd_count += 1
-    
-    if len(set(evens)) > 1 or odd_count > 1:
-        return 'NO'
-    
-    if odd_count > 1:
-        return 'NO'
-    else:
-        return 'YES'
+    # will check if 1 character has been removed from 1 index
+    removed_one = False
+    # the current count initialize to the first element in count
+    current_count = counts[0]
+
+    for n in counts:
+        # if the character occurs the same number of times
+        if n == current_count:
+            continue
+        # if you can remove on character from one index
+        elif n - 1 == current_count or n + 1 == current_count or n == 1:
+            # if one character has already been removed
+            if removed_one:
+                return "NO"
+
+            # set removed to true
+            removed_one = True
+        else:
+            return "NO"
+
+    return "YES"
     
 
-# print(isValid('aaaabbcc'))
-# print(isValid('aabbcd'))
+print(isValid('aaaabbcc')) #NO
+print(isValid('aabbccddd')) #NO
 print(isValid('ibfdgaeadiaefgbhbdghhhbgdfgeiccbiehhfcggchgghadhdhagfbahhddgghbdehidbibaeaagaeeigffcebfbaieggabcfbiiedcabfihchdfabifahcbhagccbdfifhghcadfiadeeaheeddddiecaicbgigccageicehfdhdgafaddhffadigfhhcaedcedecafeacbdacgfgfeeibgaiffdehigebhhehiaahfidibccdcdagifgaihacihadecgifihbebffebdfbchbgigeccahgihbcbcaggebaaafgfedbfgagfediddghdgbgehhhifhgcedechahidcbchebheihaadbbbiaiccededchdagfhccfdefigfibifabeiaccghcegfbcghaefifbachebaacbhbfgfddeceababbacgffbagidebeadfihaefefegbghgddbbgddeehgfbhafbccidebgehifafgbghafacgfdccgifdcbbbidfifhdaibgigebigaedeaaiadegfefbhacgddhchgcbgcaeaieiegiffchbgbebgbehbbfcebciiagacaiechdigbgbghefcahgbhfibhedaeeiffebdiabcifgccdefabccdghehfibfiifdaicfedagahhdcbhbicdgibgcedieihcichadgchgbdcdagaihebbabhibcihicadgadfcihdheefbhffiageddhgahaidfdhhdbgciiaciegchiiebfbcbhaeagccfhbfhaddagnfieihghfbaggiffbbfbecgaiiidccdceadbbdfgigibgcgchafccdchgifdeieicbaididhfcfdedbhaadedfageigfdehgcdaecaebebebfcieaecfagfdieaefdiedbcadchabhebgehiidfcgahcdhcdhgchhiiheffiifeegcfdgbdeffhgeghdfhbfbifgidcafbfcd'))
