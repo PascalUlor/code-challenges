@@ -1,28 +1,13 @@
+/*
+Lilah has a string, , of lowercase English letters that 
+she repeated infinitely many times.
+Given an integer, , find and print the number of letter a's in the first  
+letters of Lilah's infinite string.
+*/
 function repeatedString(s, n) {
   // let count = 0;
   const unique = new Set(s);
   const item = [...unique];
-  // if (item.length === 1 && item[0] === 'a') {
-  //   count = n;
-  // } else {
-  //   const check = x => {
-  //     for (let i = 0; i < x.length; i += 1) {
-  //       if (x[i] === 'a') {
-  //         count += 1;
-  //       }
-  //     }
-  //     return count;
-  //   };
-
-  //   const lengthOfStr = s.length;
-  //   const numOfAsInInputString = check(s);
-  //   if (n % lengthOfStr === 0) return numOfAsInInputString * (n / lengthOfStr);
-
-  //   let stringInRepeatedString = Math.floor(n / lengthOfStr);
-  //   let stringRemaining = n % lengthOfStr;
-  //   let aInRem = numbersOfAs(s.slice(0, stringRemaining));
-  // }
-  // return numOfAsInInputString * stringInRepeatedString + aInRem;
 
   if (item.length === 1 && item[0] === 'a') {
     count = n;
