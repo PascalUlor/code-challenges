@@ -1,3 +1,4 @@
+import time
 """
 By this logic, we say a sequence of brackets is balanced if the 
 following conditions are met:
@@ -35,9 +36,7 @@ class Stack:
             return len(self.storage)
 
 def isBalanced(s):
-
     stack = Stack()
-
     brackets_pairs = {")": "(", "]": "[", "}": "{"}
 
     for bracket in s:
@@ -46,37 +45,42 @@ def isBalanced(s):
         else:
             open_brace = stack.pop()
             if open_brace is not brackets_pairs[bracket]:
-                print("NO")
                 return "NO"
     if stack.length():
-        print("NO")
         return "NO"
-    print("YES")
     return "YES"
 
 """ 
 throws runtime error if stack data structure
 is not used
 """
-# def isBalanced(s):
-#     n = len(s)
+def isBalanced_2(s):
 
-#     brackets_pairs = {")": "(", "]": "[", "}": "{"}
-#     cache = []
-#     for bracket in s:
-#         if bracket in '({[':
-#             cache.append(bracket)
-#         else:
-#             open_brace = cache.pop()
-#             if open_brace is not brackets_pairs[bracket]:
-#                 return "NO"
-#     if len(cache):
-#         return "NO"
+    brackets_pairs = {")": "(", "]": "[", "}": "{"}
+    cache = []
+    for bracket in s:
+        if bracket in '({[':
+            cache.append(bracket)
+        else:
+            open_brace = cache.pop()
+            if open_brace is not brackets_pairs[bracket]:
+                return "NO"
+    if len(cache):
+        return "NO"
+    return "YES"
 
-#     return "YES"
-
-
+start_time = time.time()
 isBalanced('{[()]}')
 isBalanced('{[(])}')
 isBalanced('{(([])[])[]}[]')
 isBalanced('{(([])[])[]}')
+end_time = time.time()
+print(f"Stack runtime: {end_time - start_time} seconds")
+
+start_time = time.time()
+isBalanced_2('{[()]}')
+isBalanced_2('{[(])}')
+isBalanced_2('{(([])[])[]}[]')
+isBalanced_2('{(([])[])[]}')
+end_time = time.time()
+print(f"List runtime: {end_time - start_time} seconds")
