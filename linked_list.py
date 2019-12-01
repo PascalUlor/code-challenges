@@ -84,6 +84,8 @@ class Linked_List(object):
         while actual_node is not None:
             print(f"{actual_node.data}")
             actual_node = actual_node.next_node
+        if self.head is None:
+            print('list is empty')
     
     def insert_at_end(self, data):
         self.list_size += 1
@@ -99,6 +101,7 @@ class Linked_List(object):
         if pos > self.list_size:
             print('invalid position')
         else:
+            self.list_size += 1
             new_node = ListNode(data)
             current_node = self.head
             i = 0
@@ -108,6 +111,63 @@ class Linked_List(object):
             new_node.next_node = current_node.next_node
             current_node.next_node = new_node
 
+    def remove_from_pos(self, pos):
+        if pos > self.list_size:
+            print('invalid position')
+        else:
+            self.list_size -= 1
+            current_node = self.head
+            i = 0
+            while i < pos-1:
+                current_node = current_node.next_node
+                i += 1
+            pos_next = current_node.next_node
+            current_node.next_node = pos_next.next_node
+
+
+    def remove_from_end(self): #(O)n
+        # base case to ensure list in not empty
+        if self.head is None:
+            return
+        # decrement size of list
+        self.list_size -= 1
+        # set head node to a variable
+        current_node = self.head
+        prev_node = None # since head node has no previous
+
+        # traverse list
+        while current_node.next_node is not None:
+            prev_node = current_node
+            current_node = current_node.next_node
+        # if specified node to be deleted is the head then it wont have a previous
+        if prev_node is None:
+            self.head = current_node.next_node
+        else:
+            prev_node.next_node = current_node.next_node
+
+    def remove_start(self): #(O)1
+        # base case to ensure list in not empty
+        if self.head is None:
+            return
+        # decrement size of list
+        self.list_size -= 1
+        # set head node to a variable
+        current_node = self.head
+        self.head = current_node.next_node
+
+    def reverse_list(self):
+        # to reverse a llist we need 3 pointers
+        # prev, current and nextnode
+        current_node = self.head
+        temp_next_node = self.head
+        prev_node = None
+        while temp_next_node is not None:
+            temp_next_node = temp_next_node.next_node
+            current_node.next_node = prev_node
+            prev_node = current_node
+            current_node = temp_next_node
+        self.head = prev_node
+
 list_node = Linked_List()
 list_node.insert_node(23)
 list_node.insert_node(3)
@@ -115,7 +175,17 @@ list_node.insert_node(1)
 list_node.insert_at_start(0)
 # list_node.remove_node(0)
 list_node.insert_at_end(100)
-list_node.insert_at_pos(0, 4)
+list_node.insert_at_pos(10, 4)
+list_node.traverse_node()
+print(list_node)
+# print('after deletion')
+# list_node.remove_from_end()
+# list_node.remove_start()
+# list_node.remove_from_pos(1)
+list_node.traverse_node()
+list_node.reverse_list()
+print('after reversal')
+print(list_node)
 list_node.traverse_node()
 
-print(list_node)
+# print(list_node)
