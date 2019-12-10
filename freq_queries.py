@@ -7,49 +7,48 @@ If yes, print 1 else 0.
 (query, data) pair
 queries ==> (action, value)
 """
+# defaultdict is an inbuilt obj with preset keys
 
 # Complete the freqQuery function below.
-
-def binary_search(arr, target, low, high):
-        mid = (low + high)//2
-        if len(arr) == 0:
-            return -1
-        guess = arr[mid]
-        if guess == target:
-            return mid
-        if guess < target:
-            return binary_search(arr, target, mid + 1, high)
-        else:
-            return binary_search(arr, target, low, mid - 1)
+from collections import defaultdict
 def freqQuery(queries):
-    cache = []
-    output = {}
-    count = []
-    for pair in queries:
-        if pair[0] == 1:
-            cache.append(pair[1])
-        if pair[0] == 2 and len(cache) != 0:
-            item = binary_search(cache, pair[1], 0, len(cache)-1)
-            cache.pop(item)
-        if pair[0] == 3:
-            if len(cache) == 0:
-                count.append(0)
-            for i in cache:
-                if i not in output:
-                    output[i] = 1
-                else:
-                    output[i] += 1
-            for j in output.values():
-                if j == pair[1]:
-                    count.append(1)
-                else:
-                    if 0 not in count:
-                        count.append(0)
-    print(output, 'output')
-    print(cache, '==cache')
-    print(count, 'count')
-    return count
+    val_count = defaultdict(int) # key value pair of the each number and the number of times they appear
+    freq_count = defaultdict(int) # key value pair of the freq of each numbers and the count of numbers with that freq
+    result = []
 
+    for i, j in queries:
+        if i == 1:
+            # check if j is in val_count object
+            if j in val_count:
+                # if j is already in val_count then on incrementing
+                # the count of j in val_count we must decrement the count of 
+                # numbers with the old freq of j
+                if freq_count[val_count[j]] > 0:
+                    freq_count[val_count[j]] -= 1
+                # then increment the count of j in val_count and freq in freq_count
+                val_count[j] += 1
+                freq_count[val_count[j]] += 1
+            else:
+                # if j has never been counted in val_count we add it and count
+                val_count[j] = 1
+                if freq_count[val_count[j]]:
+                    freq_count[val_count[j]] += 1
+                else:
+                    freq_count[val_count[j]] = 1
+        if i == 2:
+            if val_count[j]:
+                # decrement old count
+                freq_count[val_count[j]] -= 1
+                val_count[j] -= 1
+                # increment new count
+                freq_count[val_count[j]] += 1
+        if i == 3:
+            # since we are searching for values that appear j times
+            if j in freq_count and freq_count[j] > 0:
+                result.append(1)
+            else:
+                result.append(0)
+    return result
 
 arr = [(1, 5),
  (1, 6),
