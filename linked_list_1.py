@@ -3,8 +3,8 @@ class ListNode(object):
     def __init__(self, data):
         self.data = data
         self.next_node = None #address to next node
-    def __str__(self):
-        return f"{self.data} → {self.next_node}"
+    # def __str__(self):
+    #     return f"{self.data} → {self.next_node}"
 
 # node = ListNode(5)
 # node.next_node = 2
@@ -20,8 +20,8 @@ class Linked_List(object):
         self.head = None
         self.tail = None
         self.list_size = 0
-    def __str__(self):
-        return f"Head→{self.head}"
+    # def __str__(self):
+    #     return f"Head→{self.head}"
 
     def insert_node(self, data): #add a new node to linked list
         self.list_size += 1 #increment list size
@@ -79,13 +79,17 @@ class Linked_List(object):
     
     def traverse_node(self):
         actual_node = self.head
+        linked_list_string = ""
 
         # traverse list
         while actual_node is not None:
-            print(f"{actual_node.data}")
+            # print(f"{actual_node.data}")
+            linked_list_string += f"{actual_node.data} → "
             actual_node = actual_node.next_node
+        linked_list_string += 'None'
         if self.head is None:
             print('list is empty')
+        print(linked_list_string)
     
     def insert_at_end(self, data):
         self.list_size += 1
@@ -176,8 +180,8 @@ list_node.insert_at_start(0)
 # list_node.remove_node(0)
 list_node.insert_at_end(100)
 list_node.insert_at_pos(10, 4)
+# list_node.insert_at_pos(4, 4)
 list_node.traverse_node()
-print(list_node)
 # print('after deletion')
 # list_node.remove_from_end()
 # list_node.remove_start()
@@ -185,7 +189,6 @@ print(list_node)
 list_node.traverse_node()
 list_node.reverse_list()
 print('after reversal')
-print(list_node)
 list_node.traverse_node()
 
 # print(list_node)
