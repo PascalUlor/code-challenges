@@ -40,7 +40,7 @@ class Graph:
             v = q.dequeue()
             if v not in visited:
                 visited.add(v)
-                print('visited node', v)
+                print('=bft= visited node', v)
                 for next_vertex in self.vertices[v]:
                     q.enqueue(next_vertex)
 
@@ -57,7 +57,7 @@ class Graph:
             v = s.pop()
             if v not in visited:
                 visited.add(v)
-                print('visited node', v)
+                print('=dft= visited node', v)
                 for next_vertex in self.vertices[v]:
                     s.push(next_vertex)
     def dft_recursive(self, starting_vertex, visited = set()):
@@ -69,7 +69,7 @@ class Graph:
         # pass  # TODO
 
         visited.add(starting_vertex)
-        print('recur visited node', starting_vertex)
+        print('=dft= recur visited node', starting_vertex)
         for v in self.vertices[starting_vertex]:
             if v not in visited:
                 self.dft_recursive(v)

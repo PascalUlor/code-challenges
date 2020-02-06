@@ -1,3 +1,4 @@
+Intro to Python 1
 1. https://www.youtube.com/watch?v=7gEa_Rs_U5s&feature=youtu.be
 2. https://www.youtube.com/watch?v=UxbnwjtQDLc&feature=youtu.be
 3. augmentation video https://youtu.be/pPGQOhXPJ8I
@@ -5,7 +6,7 @@
 5. augmentation video https://youtu.be/gYJ5QjlRmtc
 6. augmentation video https://youtu.be/MjbZ2mQEqwI
 
-Python 2
+Intro to Python 2
 7. https://youtu.be/_Gpr4SQjyI0
 8. https://youtu.be/GAxi1HzU6Qw
 
