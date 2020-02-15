@@ -1,21 +1,5 @@
 import random
-
-
-class Queue:
-    def __init__(self):
-        self.storage = []
-
-    def enqueue(self, value):
-        self.storage.append(value)
-
-    def dequeue(self):
-        if self.size() > 0:
-            return self.storage.pop(0)
-        else:
-            return None
-
-    def size(self):
-        return len(self.storage)
+import time
 
 
 class SocialGraph:
@@ -26,7 +10,7 @@ class SocialGraph:
 
     def addUser(self, name, contacts):
         self.lastID += 1
-        self.contact_list.append({name : list(set(contacts))})
+        self.contact_list.append({name: list(set(contacts))})
 
     def populateContacts(self, numUsers, avgContacts):
         # reset graph
@@ -42,11 +26,9 @@ class SocialGraph:
             totalContacts = 0
             contacts = []
             while totalContacts < targetContacts:
-                # set contactID to a random number between 1 and the lastID
+                # set contactID to a random number between 1 and the avgContacts
                 contactID = random.randint(1, avgContacts << i)
-                # if the return of add contact of userID and contactID is true
                 contacts.append(contactID)
-                # increment total friendships
                 totalContacts += 1
             # add user to the graph
             if len(contacts) == totalContacts:
@@ -60,7 +42,8 @@ def get_off_set(user_contacts):
         if list(i.keys())[0] not in off_set:
             for j in range(0, len(user_contacts)-1):
                 if (list(i.keys())[0] != list(user_contacts[j].keys())[0]):
-                    join = list(i.values())[0] + user_contacts[j].get(list(user_contacts[j].keys())[0])
+                    join = list(i.values())[
+                        0] + user_contacts[j].get(list(user_contacts[j].keys())[0])
                     set(join)
                     per = (len(list(i.values())[0]) * 30)//100
                     if (len(join) - len(set(join)) > per):
@@ -73,11 +56,14 @@ def get_off_set(user_contacts):
 
 if __name__ == '__main__':
     sg = SocialGraph()
-    numUsers = 10
-    avgContacts = 9
+    start_time = time.time()
+    numUsers = 1000
+    avgContacts = 900
 
     sg.populateContacts(numUsers, avgContacts)
 
-    print(sg.contact_list)
-
-    print(get_off_set(sg.contact_list))
+    print('===Fetching off_sets===>')
+    user_contacts = sg.contact_list
+    print(get_off_set(user_contacts))
+    end_time = time.time()
+    print(f"Algorithm runtime: {end_time - start_time} seconds")
