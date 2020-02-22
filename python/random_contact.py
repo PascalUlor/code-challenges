@@ -57,13 +57,14 @@ def get_off_set(user_contacts):
 if __name__ == '__main__':
     sg = SocialGraph()
     start_time = time.time()
-    numUsers = 1000
-    avgContacts = 900
+    numUsers = 100
+    avgContacts = 90
 
     sg.populateContacts(numUsers, avgContacts)
 
     print('===Fetching off_sets===>')
     user_contacts = sg.contact_list
-    print(get_off_set(user_contacts))
+    # print(get_off_set(user_contacts))
+    sg.populateContacts(numUsers, avgContacts)
     end_time = time.time()
     print(f"Algorithm runtime: {end_time - start_time} seconds")
