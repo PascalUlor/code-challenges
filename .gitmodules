@@ -1,0 +1,3 @@
+[submodule "tom-codes"]
+	path = tom-codes
+	url = https://github.com/decagondev/programming_weekend.git
