@@ -67,3 +67,8 @@ const openBracket = [];
         }
      }
  }
+ if(arrStore.length) {
+         return false;
+     }
+     return true;
+    }
