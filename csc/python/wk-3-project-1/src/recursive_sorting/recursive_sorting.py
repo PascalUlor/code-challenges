@@ -132,6 +132,8 @@ def merge_sort_in_place(arr, l, r):
 #         merge_in_place(A,p,mid,r)
 #     return A
 merge_sort([9,7,8,1,3,6,55,88,90])
+test_arr = [9,7,8,1,3,6,55,88,90]
+merge_sort_in_place(test_arr, 0, len(test_arr)-1)
 
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
