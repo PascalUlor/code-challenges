@@ -5,7 +5,10 @@
     },
     {
       "name": ".leetcode",
-      "path": "../.leetcode"
+      //Mac Path
+      "path": "../../../.leetcode"
+      //Linux Path
+      // "path": "../.leetcode"
     }
   ],
   "settings": {
