@@ -51,7 +51,6 @@
 #         self.left = left
 #         self.right = right
 
-from collections import deque
 # create a queue
 class Queue:
     def __init__(self):
