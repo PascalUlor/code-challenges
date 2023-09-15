@@ -103,7 +103,7 @@ tree.insert(16);
 tree.insert(7);
 tree.contains(10);
 
-const tree = new BinarySearchTree(11);
+const tree2 = new BinarySearchTree(11);
 tree
   .insert(10)
   .insert(5)
